@@ -1,5 +1,5 @@
 public class Sack {
-    private final CargoType cargoType;
+    protected final CargoType cargoType;
     private final double weightInKG;
     public Sack(CargoType cargoType, double weight){
         this.cargoType = cargoType;

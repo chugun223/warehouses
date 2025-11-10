@@ -2,9 +2,9 @@ import java.util.*;
 
 public class BoxWarehouse extends Warehouse<Box>{
     public List<Box> getSortedByLength(){
-        return null;
+        return items.stream().sorted(Comparator.comparing(Box::getMaxSize)).toList();
     }
     public int getFragileAmount(){
-        return 0;
+        return (int)items.stream().filter(item -> item.isFragile).count();
     }
 }
