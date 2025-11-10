@@ -4,9 +4,18 @@ import java.util.List;
 import java.util.Queue;
 
 public abstract class Warehouse<T> {
-    private List<T> items = new ArrayList<T>();
-    private Queue<T> ordersQueue = new LinkedList<T>();
-    public abstract List<T> getItems();
-    public abstract void addOrder(Order item);
-    public abstract void addVIPOrder(Order item);
+    protected List<T> items = new ArrayList<T>();
+    protected LinkedList<Order<T>> ordersQueue = new LinkedList<Order<T>>();
+    public List<T> getItems(){
+        return new ArrayList<>(this.items);
+    }
+    public void addOrder(Order item){
+        this.ordersQueue.add(item);
+    }
+    public void addVIPOrder(Order item){
+        this.ordersQueue.addFirst(item);
+    }
+    public T processOrder(){
+        return ordersQueue.poll().getItem();
+    }
 }
