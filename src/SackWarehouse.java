@@ -12,10 +12,13 @@ public class SackWarehouse extends Warehouse<Sack>{
         return sackTypesCounter;
     }
     public Set<CargoType> getEmptyTypes(){
-        Set<CargoType> leftTypes = new HashSet<>();
+        Set<CargoType> outOfStockTypes = new HashSet<>();
+        outOfStockTypes.add(CargoType.Cement);
+        outOfStockTypes.add(CargoType.Sand);
+        outOfStockTypes.add(CargoType.Plaster);
         for (Sack sack : items){
-            leftTypes.add(sack.cargoType);
+            outOfStockTypes.remove(sack.cargoType);
         }
-        return leftTypes;
+        return outOfStockTypes;
     }
 }
