@@ -1,3 +1,3 @@
 public enum CargoType {
-    Sand, Сement, Plaster
+    Sand, Cement, Plaster
 }

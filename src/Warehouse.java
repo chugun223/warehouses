@@ -9,13 +9,36 @@ public abstract class Warehouse<T> {
     public List<T> getItems(){
         return new ArrayList<>(this.items);
     }
-    public void addOrder(Order item){
-        this.ordersQueue.add(item);
+    public void addOrder(Order<T> order){
+        if(!order.isVIP()){
+            this.ordersQueue.addLast(order);
+        }
+        else{
+            this.addVIPOrder(order);
+            System.out.println("Ваш заказ был VIP и поставлен в начало очереди");
+        }
     }
-    public void addVIPOrder(Order item){
-        this.ordersQueue.addFirst(item);
+    public void addVIPOrder(Order<T> order){
+        if (order.isVIP()){
+            this.ordersQueue.addFirst(order);
+        }
+        else{
+            this.addOrder(order);
+            System.out.println("Ваш заказ не был VIP и будет поставлен в конец очереди");
+        }
     }
     public T processOrder(){
-        return ordersQueue.poll().getItem();
+        Order order = ordersQueue.pollFirst();
+        if(order == null){
+            System.out.println("Очередь заказов пуста");
+            return null;
+        }
+        T item = (T) order.getItem();
+        boolean removed = items.remove(item);
+        if (!removed) {
+            System.out.println("Товар на складе не найден");
+            return null;
+        }
+        return item;
     }
 }
