@@ -41,7 +41,7 @@ public class Main {
 
             switch (command) {
                 case 1 -> {
-                    if (parts.length < 2) {
+                    if (parts.length != 2) {
                         System.out.println("укажите склад: Sack или Box");
                         break;
                     }
@@ -61,7 +61,7 @@ public class Main {
                 }
 
                 case 2 -> {
-                    if (parts.length < 4) {
+                    if (parts.length != 4) {
                         System.out.println("использование: 2 <тип> <вес> <VIP:true/false>");
                         break;
                     }
@@ -80,7 +80,7 @@ public class Main {
                 }
 
                 case 3 -> {
-                    if (parts.length < 2) {
+                    if (parts.length != 2) {
                         System.out.println("укажите склад: Sack или Box");
                         break;
                     }
@@ -101,7 +101,7 @@ public class Main {
                 }
 
                 case 5 -> {
-                    if (parts.length < 6) {
+                    if (parts.length != 6) {
                         System.out.println("\nиспользование: 6 <длина> <ширина> <высота> <хрупкая:true/false> <VIP:true/false>");
                         break;
                     }
